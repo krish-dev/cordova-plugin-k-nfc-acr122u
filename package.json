@@ -1,0 +1,32 @@
+{
+  "name": "cordova-plugin-k-nfc-acr122u",
+  "version": "0.0.5",
+  "description": "Cordova ACS acr122u nfc card reader",
+  "peerDependencies": {
+    "rxjs": "5.5.11"
+  },
+  "cordova": {
+    "id": "cordova-plugin-k-nfc-acr122u",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "nfc",
+    "card reader",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krish-dev/cordova-plugin-k-nfc-acr122u.git"
+  },
+  "bugs": {
+    "url": "https://github.com/krish-dev/cordova-plugin-k-nfc-acr122u/issues"
+  },
+  "main": "bundles/main.js",
+  "typings": "./types/index.d.ts",
+  "author": "Krishnendu Sekhar Das",
+  "license": "MIT"
+}

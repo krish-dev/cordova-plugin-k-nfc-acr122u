@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-k-nfc-acr122u"
+    version="0.0.5">
+    <name>KNfcAcr122U</name>
+    <description>Cordova NFC Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,nfc,payment</keywords>
+
+    <js-module src="www/nfc.js" name="KNfcAcr122U">
+        <clobbers target="KNfcAcr122U"/>
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="KNfcAcr122U">
+                <param name="android-package" value="in.co.indusnet.cordova.plugins.nfc.KNfcAcr122U"/>
+				<param name="onload" value="true"/>
+            </feature>
+        </config-file>
+
+        <lib-file src="src/android/lib/acssmc-1.1.4.jar"/>
+        <source-file src="src/android/KNfcAcr122U.java" target-dir="src/in/co/indusnet/cordova/plugins/nfc"/>
+    </platform>
+</plugin>
