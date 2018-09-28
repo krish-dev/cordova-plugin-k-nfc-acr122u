@@ -22,6 +22,11 @@ export interface NfcDeviceInfo {
 export interface NfcTagInfo {
     tagType: TagType;
     uid: string;
+    uidReverse: string;
+    uidHex: string;
+    uidHexReverse: string;
+    uid4byteHex: string;
+    uid4byteHexReverse: string;
 }
 
 export interface NfcDeviceConnectionReponse {

@@ -3,7 +3,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-k-nfc-acr122u"
-    version="0.0.5">
+    version="0.0.7">
     <name>KNfcAcr122U</name>
     <description>Cordova NFC Plugin</description>
     <license>Apache 2.0</license>

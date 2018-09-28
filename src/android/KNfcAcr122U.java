@@ -13,6 +13,7 @@ import android.util.Log;
 import com.acs.smartcard.Reader;
 import com.acs.smartcard.ReaderException;
 
+
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -22,7 +23,10 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.Arrays;
+
+
 
 /**
  * KNfcAcr122U android Created by Krishnendu Sekhar Das
@@ -198,19 +202,40 @@ public class KNfcAcr122U extends CordovaPlugin {
     void buildAndSentCardInfo(byte[] data, String tagType) {
 
         byte responseCode = data[data.length - 1];
+        byte[] data4byte = Arrays.copyOf(data, 4);
+
         JSONObject resObj = new JSONObject();
         try {
 
             if (responseCode == (byte) 0x90) {
                 // success
-                String cardUID = "";
+
+                String uidHex = "";
+                String uidHexReverse = "";
+
+                String uid4byteHex = "";
+                String uid4byteHexReverse = "";
+
                 for (byte b : Arrays.copyOf(data, data.length - 1)) {
                     String st = String.format("%02X", b);
-                    cardUID += st;
+                    uidHex += st;
+                    uidHexReverse = st + uidHexReverse;
+                }
+
+                for (byte b : data4byte) {
+                    String st = String.format("%02X", b);
+                    uid4byteHex += st;
+                    uid4byteHexReverse = st + uid4byteHexReverse;
                 }
 
                 JSONObject tagInfo = new JSONObject();
-                tagInfo.put("uid", cardUID);
+                tagInfo.put("uid", uidHex);
+                tagInfo.put("uidReverse", uidHexReverse);
+                tagInfo.put("uidHex", uidHex.replaceAll("..(?!$)", "$0:"));
+                tagInfo.put("uidHexReverse", uidHexReverse.replaceAll("..(?!$)", "$0:"));
+                tagInfo.put("uid4byteHex", uid4byteHex.replaceAll("..(?!$)", "$0:"));
+                tagInfo.put("uid4byteHexReverse", uid4byteHexReverse.replaceAll("..(?!$)", "$0:"));
+
                 tagInfo.put("tagType", tagType);
 
                 resObj.put("type", RES_TYPE_TAG_INFO);
